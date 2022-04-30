@@ -7,53 +7,78 @@
 	<link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-	<body>
+	<form>
+		<div class="form-group">
+			<input id="city-input" class="form-control form-control-lg" type="text" placeholder="Search city">
+		</div>
+		<button type="button" onclick="searchCity()" class="btn btn-lg btn-info">Search</button>
+		
+		
+	</form>
+	<h2 class='city-name' id='city-name' ></h2>
+	
+	
 	<div class="container">
-		 <div class="mid">
-		 	<div class="corner_text">
-		 		<p>N</p>
-		 		<p>W</p>
-		 		<p>E</p>
-		 		<p>S</p>
-		 		<p>|</p>
-		 		<p>|</p>
-		 		<p>|</p>
-		 		<p>|</p>
-		 	</div>
-		 	</div>
-		 	<div class="data">
-		 		<div class="cel">
-		 			<h1>12:10<sub>Pm</sub></h1>
-		 			<p class="date">12/5/2021</p>
-		 			<p>Temperature<span>13°</span></p>
-		 		</div>
-		 		<div class="max_min">
-		 			<div class="max">
-		 				<p>Max <span>19°</span> </p>
-		 				<hr>
-		 				<p>Humidity <span>60%</span></p>
-		 			</div>
-		 			<div class="cloud">
-		 				<img src="https://e7.pngegg.com/pngimages/955/496/png-clipart-sun-and-cloud-digital-illustration-weather-forecasting-rain-icon-shower-weather-icon-material-company-cloud.png" alt="">
-		 			</div>
-		 			<div class="min">
-		 				<p>Min <span>9°</span> </p>
-		 				<hr>
-		 				<p>Pressur <span>743mm</span></p>
-		 			</div>
-		 		</div>
-
-		 		<div class="bottom">
-		 			<p>Wind <span>0.9 m/s NW</span></p>
-		 			<p>Rain <span>0.0mm</span></p>
-		 			<p>Duw point <span>9°</span></p>
-		 			<p>Solar radiation <span>44w/m<sup>2</sup></span></p>
-		 		</div>
-		 </div>
+		<div class="mid">
+			<div class="corner_text">
+				<p>N</p>
+				<p>W</p>
+				<p>E</p>
+				<p>S</p>
+				<p>|</p>
+				<p>|</p>
+				<p>|</p>
+				<p>|</p>
+			</div>
+		</div>
+		<div class="data">
+			<div class="cel">
+				<p id="timeNow"></p>
+				<!--<p id="time">12:10<sub>Pm</sub></p>-->
+				<!--<p class="date">12/5/2021</p>-->
+				
+				<p id="date"></p>
+				<p id='temp'> Temperature: <span>----</span> °C </p>
+			</div>
+			<div class="max_min">
+				<div class="max">
+					<p id='max-temp'>Max <span>----</span> °C </p>
+					<hr>
+					<p id='humidity'>Humidity <br> <span>--</span> %</p>
+				</div>
+				<div id='icon' class="cloud">
+					<img src="http://openweathermap.org/img/w/10d.png" alt="">
+				</div>
+				<div class="min">
+					<p id='min-temp'>Min <span>----</span> °C</p>
+					<hr>
+					<p id='pressure' >Pressur <br> <span>---</span> mm</p>
+				</div>
+			</div>
+			
+			<div class="bottom">
+				<p id='weather-type'>Weather Type :  <span> ------</span></p>
+				<p id='wind'>Wind speed <span> -- </span> km/h </p>
+				<p id='feels'>Feels Like <span> -- </span>  °C </p>
+				
+				<p id='clouds'>clouds <span> -- </span> %</p>
+				<!--<p>Duw point <span>9°</span></p>-->
+				
+			</div>
+		</div>
 	</div>
 	
-</body>
+	
+	
+	<script>
+		let timeNow1 = new Date();
+		
+		document.getElementById("timeNow").innerHTML = `${timeNow1.toLocaleTimeString('en-US', { hour: 'numeric',minute:'numeric', second: 'numeric', hour12: true }).split(' ')[0]} <sub>${timeNow1.toLocaleTimeString('en-US', { hour: 'numeric',minute:'numeric', second: 'numeric', hour12: true }).slice(-2)} </sub>` ;
+		console.log(timeNow1.toLocaleTimeString('en-US', { hour: 'numeric',minute:'numeric', second: 'numeric', hour12: true }).slice(-2));
+		
+		document.getElementById("date").innerHTML = timeNow1.toLocaleDateString() ;
+	</script>
 	
 </body>
+
 </html>
